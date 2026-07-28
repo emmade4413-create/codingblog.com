@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SkyWatch — Global Real-Time Weather Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0e1a; color: #e2f0ff; font-family: 'Inter', sans-serif; min-height: 100vh; padding: 40px 24px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 48px; border-bottom: 1px solid rgba(74,244,255,0.15); padding-bottom: 24px; }
+  .logo-svg { width: 48px; height: 36px; }
+  .brand { font-size: 24px; font-weight: 700; color: #e2f0ff; letter-spacing: -0.02em; }
+  .brand span { color: #4af4ff; }
+  .meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #4a6580; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+  h1 { font-size: 13px; font-family: 'JetBrains Mono', monospace; color: #4af4ff; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px; opacity: 0.8; }
+  table { width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  th { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: #4af4ff; opacity: 0.6; padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(74,244,255,0.15); }
+  td { padding: 12px 12px; color: #8ba7c7; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  tr:hover td { background: rgba(74,244,255,0.03); }
+  td:first-child { color: #e2f0ff; font-weight: 500; }
+  .footer { margin-top: 40px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #4a6580; text-align: center; opacity: 0.6; }
+  .badge { display: inline-block; background: rgba(74,244,255,0.08); border: 1px solid rgba(74,244,255,0.2); color: #4af4ff; font-family: 'JetBrains Mono', monospace; font-size: 9px; padding: 3px 8px; border-radius: 2px; letter-spacing: 0.1em; text-transform: uppercase; margin-left: 12px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<header>
+  <svg class="logo-svg" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="38" cy="32" rx="16" ry="8" fill="#4af4ff" opacity="0.95"/>
+    <path d="M38 28 C28 18, 10 12, 2 20 C12 20, 22 24, 30 30 Z" fill="#4af4ff" opacity="0.85"/>
+    <path d="M38 28 C48 18, 66 10, 76 18 C66 20, 54 24, 46 30 Z" fill="#4af4ff" opacity="0.85"/>
+    <path d="M30 36 C26 44, 20 46, 16 48 M46 36 C50 44, 56 46, 60 48" stroke="#4af4ff" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+    <ellipse cx="52" cy="29" rx="7" ry="5.5" fill="#4af4ff"/>
+    <path d="M58 29 L64 27 L60 31 Z" fill="#4af4ff" opacity="0.7"/>
+    <circle cx="54" cy="27.5" r="1.5" fill="#0a0e1a"/>
+  </svg>
+  <div>
+    <div class="brand">Sky<span>Watch</span></div>
+    <div class="meta">Global Real-Time Weather Intelligence</div>
+  </div>
+</header>
+<h1>Global Weather Report <span class="badge">Live</span></h1>
+<p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#4a6580;margin-bottom:24px;">Generated Mon, 27 Jul 2026 15:50:17 GMT · 16 cities · All temperatures in °C</p>
+<table>
+  <thead>
+    <tr>
+      <th>City</th><th>Country</th><th>Temp</th><th>Feels Like</th><th>Condition</th><th>Wind</th><th>Humidity</th><th>Pressure</th><th>Visibility</th><th>Local Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td style="color:#4af4ff">29°C</td>
+      <td>33°C</td>
+      <td>Partly Cloudy</td>
+      <td>14 km/h</td>
+      <td>72%</td>
+      <td>1012 hPa</td>
+      <td>9.5 km</td>
+      <td>14:22</td>
+    </tr>
+    <tr>
+      <td>London</td>
+      <td>United Kingdom</td>
+      <td style="color:#4af4ff">17°C</td>
+      <td>15°C</td>
+      <td>Light Rain</td>
+      <td>22 km/h</td>
+      <td>83%</td>
+      <td>998 hPa</td>
+      <td>6.2 km</td>
+      <td>06:22</td>
+    </tr>
+    <tr>
+      <td>New York</td>
+      <td>United States</td>
+      <td style="color:#4af4ff">24°C</td>
+      <td>26°C</td>
+      <td>Clear Sky</td>
+      <td>18 km/h</td>
+      <td>55%</td>
+      <td>1018 hPa</td>
+      <td>14.8 km</td>
+      <td>01:22</td>
+    </tr>
+    <tr>
+      <td>Sydney</td>
+      <td>Australia</td>
+      <td style="color:#4af4ff">16°C</td>
+      <td>14°C</td>
+      <td>Overcast</td>
+      <td>25 km/h</td>
+      <td>68%</td>
+      <td>1015 hPa</td>
+      <td>11 km</td>
+      <td>17:22</td>
+    </tr>
+    <tr>
+      <td>Dubai</td>
+      <td>UAE</td>
+      <td style="color:#ff6b35">41°C</td>
+      <td>46°C</td>
+      <td>Sunny</td>
+      <td>11 km/h</td>
+      <td>38%</td>
+      <td>1005 hPa</td>
+      <td>8.5 km</td>
+      <td>09:22</td>
+    </tr>
+    <tr>
+      <td>São Paulo</td>
+      <td>Brazil</td>
+      <td style="color:#4af4ff">22°C</td>
+      <td>23°C</td>
+      <td>Showers</td>
+      <td>9 km/h</td>
+      <td>78%</td>
+      <td>1010 hPa</td>
+      <td>7 km</td>
+      <td>02:22</td>
+    </tr>
+    <tr>
+      <td>Moscow</td>
+      <td>Russia</td>
+      <td style="color:#7eb8ff">-4°C</td>
+      <td>-9°C</td>
+      <td>Snowfall</td>
+      <td>17 km/h</td>
+      <td>85%</td>
+      <td>1022 hPa</td>
+      <td>5.5 km</td>
+      <td>09:22</td>
+    </tr>
+    <tr>
+      <td>Mumbai</td>
+      <td>India</td>
+      <td style="color:#4af4ff">33°C</td>
+      <td>40°C</td>
+      <td>Humid Fog</td>
+      <td>20 km/h</td>
+      <td>88%</td>
+      <td>1006 hPa</td>
+      <td>4.2 km</td>
+      <td>11:52</td>
+    </tr>
+    <tr>
+      <td>Cairo</td>
+      <td>Egypt</td>
+      <td style="color:#ff6b35">37°C</td>
+      <td>38°C</td>
+      <td>Hot & Clear</td>
+      <td>13 km/h</td>
+      <td>25%</td>
+      <td>1008 hPa</td>
+      <td>12 km</td>
+      <td>08:22</td>
+    </tr>
+    <tr>
+      <td>Toronto</td>
+      <td>Canada</td>
+      <td style="color:#4af4ff">8°C</td>
+      <td>5°C</td>
+      <td>Partly Cloudy</td>
+      <td>28 km/h</td>
+      <td>60%</td>
+      <td>1020 hPa</td>
+      <td>15 km</td>
+      <td>01:22</td>
+    </tr>
+    <tr>
+      <td>Paris</td>
+      <td>France</td>
+      <td style="color:#4af4ff">19°C</td>
+      <td>18°C</td>
+      <td>Overcast</td>
+      <td>15 km/h</td>
+      <td>70%</td>
+      <td>1004 hPa</td>
+      <td>9 km</td>
+      <td>07:22</td>
+    </tr>
+    <tr>
+      <td>Singapore</td>
+      <td>Singapore</td>
+      <td style="color:#4af4ff">31°C</td>
+      <td>38°C</td>
+      <td>Thunderstorm</td>
+      <td>8 km/h</td>
+      <td>91%</td>
+      <td>1009 hPa</td>
+      <td>6.8 km</td>
+      <td>14:22</td>
+    </tr>
+    <tr>
+      <td>Reykjavik</td>
+      <td>Iceland</td>
+      <td style="color:#4af4ff">3°C</td>
+      <td>-2°C</td>
+      <td>Gale Force</td>
+      <td>45 km/h</td>
+      <td>90%</td>
+      <td>985 hPa</td>
+      <td>3 km</td>
+      <td>06:22</td>
+    </tr>
+    <tr>
+      <td>Nairobi</td>
+      <td>Kenya</td>
+      <td style="color:#4af4ff">21°C</td>
+      <td>20°C</td>
+      <td>Partly Cloudy</td>
+      <td>10 km/h</td>
+      <td>62%</td>
+      <td>1013 hPa</td>
+      <td>13.5 km</td>
+      <td>09:22</td>
+    </tr>
+    <tr>
+      <td>Seoul</td>
+      <td>South Korea</td>
+      <td style="color:#4af4ff">12°C</td>
+      <td>10°C</td>
+      <td>Cloudy</td>
+      <td>16 km/h</td>
+      <td>55%</td>
+      <td>1019 hPa</td>
+      <td>10 km</td>
+      <td>15:22</td>
+    </tr>
+    <tr>
+      <td>Buenos Aires</td>
+      <td>Argentina</td>
+      <td style="color:#4af4ff">26°C</td>
+      <td>27°C</td>
+      <td>Clear</td>
+      <td>12 km/h</td>
+      <td>65%</td>
+      <td>1011 hPa</td>
+      <td>12.5 km</td>
+      <td>02:22</td>
+    </tr></tbody>
+</table>
+<div class="footer">SkyWatch · Powered by global meteorological sensors · Data updates every 10 minutes</div>
+</body>
+</html>

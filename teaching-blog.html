@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Examined Classroom — Ms. Eleanor Marsh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #FAF7F2; color: #1A1208; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 50; background: rgba(250,247,242,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,18,8,0.1); padding: 0 clamp(1.5rem,5vw,5rem); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: #1A1208; text-decoration: none; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.875rem; font-weight: 500; color: #7A6A52; text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: #C4622D; }
+
+/* HERO */
+.hero { padding: clamp(5rem,10vw,9rem) clamp(1.5rem,5vw,5rem) clamp(3rem,6vw,5rem); display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1280px; margin: 0 auto; }
+.hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #C4622D; margin-bottom: 1.5rem; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.75rem,5vw,4.5rem); font-weight: 700; line-height: 1.1; color: #1A1208; margin-bottom: 1.5rem; }
+.hero h1 em { font-style: italic; color: #C4622D; }
+.hero-body { font-size: 1.0625rem; line-height: 1.75; color: #7A6A52; max-width: 44ch; margin-bottom: 2.5rem; }
+.hero-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: #C4622D; color: #FAF7F2; padding: 0.8rem 1.75rem; font-size: 0.9rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s; }
+.hero-cta:hover { background: #8B3A10; }
+.hero-image { position: relative; }
+.hero-image img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+.hero-image-caption { position: absolute; bottom: -1.25rem; right: -1.25rem; background: #1A1208; color: #FAF7F2; padding: 1.25rem 1.5rem; font-family: 'DM Mono', monospace; font-size: 0.75rem; line-height: 1.5; }
+
+/* SECTION COMMONS */
+section { padding: clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,5rem); max-width: 1280px; margin: 0 auto; }
+.section-label { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7A6A52; margin-bottom: 0.75rem; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem,3vw,2.75rem); font-weight: 700; color: #1A1208; margin-bottom: 3rem; }
+.section-divider { height: 1px; background: rgba(26,18,8,0.1); max-width: 1280px; margin: 0 auto; }
+
+/* POSTS GRID */
+.posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+.post-card { background: #F4F0E8; overflow: hidden; transition: transform 0.2s; cursor: pointer; }
+.post-card:hover { transform: translateY(-3px); }
+.post-image { aspect-ratio: 16/9; background-size: cover; background-position: center; background-color: #E8E2D6; }
+.post-body { padding: 1.5rem; }
+.category { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: #C4622D; display: block; margin-bottom: 0.6rem; }
+.post-body h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; line-height: 1.35; color: #1A1208; margin-bottom: 0.75rem; }
+.post-body p { font-size: 0.875rem; line-height: 1.65; color: #7A6A52; margin-bottom: 1rem; }
+.post-meta { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #7A6A52; }
+
+/* LESSONS */
+.lessons-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+.lesson-card { border: 1px solid rgba(26,18,8,0.12); padding: 1.75rem; transition: border-color 0.2s; }
+.lesson-card:hover { border-color: #C4622D; }
+.lesson-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.lesson-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: rgba(26,18,8,0.15); }
+.downloads { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #7A6A52; }
+.lesson-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: #1A1208; margin-bottom: 0.5rem; }
+.lesson-meta { font-size: 0.8rem; color: #7A6A52; margin-bottom: 1.25rem; }
+.download-btn { background: none; border: 1px solid #C4622D; color: #C4622D; padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.download-btn:hover { background: #C4622D; color: #FAF7F2; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; }
+.about-image img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+.about-tag { display: inline-block; background: #E8E2D6; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.08em; color: #7A6A52; padding: 0.3rem 0.7rem; margin-bottom: 1.5rem; }
+.about-content h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem,2.5vw,2.5rem); font-weight: 700; line-height: 1.2; margin-bottom: 1.5rem; color: #1A1208; }
+.about-content p { font-size: 0.975rem; line-height: 1.8; color: #7A6A52; margin-bottom: 1.25rem; }
+.about-stats { display: flex; gap: 3rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(26,18,8,0.1); }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: #C4622D; display: block; }
+.stat-label { font-size: 0.8rem; color: #7A6A52; }
+
+/* FOOTER */
+footer { background: #1A1208; color: #FAF7F2; padding: clamp(3rem,5vw,5rem) clamp(1.5rem,5vw,5rem); }
+.footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; }
+.footer-brand { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; }
+.footer-tagline { font-size: 0.875rem; color: rgba(250,247,242,0.5); line-height: 1.6; }
+.footer-col h5 { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,247,242,0.4); margin-bottom: 1rem; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.6rem; font-size: 0.875rem; color: rgba(250,247,242,0.65); }
+.footer-bottom { max-width: 1280px; margin: 2.5rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(250,247,242,0.1); font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(250,247,242,0.3); }
+
+@media (max-width: 768px) {
+  .hero, .about-grid { grid-template-columns: 1fr; }
+  .hero-image-caption { right: 0; bottom: -2rem; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">The Examined Classroom</a>
+  <ul class="nav-links">
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#lessons">Lessons</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="mailto:eleanor@examinedclassroom.edu">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Teaching · Writing · Thinking</p>
+      <h1>Ideas worth <em>sitting with</em> a little longer</h1>
+      <p class="hero-body">Essays on pedagogy, literature, and the daily practice of helping young people think. Written by a high school English teacher of fourteen years who still finds it hard and still finds it worth it.</p>
+      <a href="#writing" class="hero-cta">Read the Blog →</a>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700&h=875&fit=crop&auto=format" alt="Students engaged in classroom discussion" loading="lazy">
+      <div class="hero-image-caption">Ms. Eleanor Marsh<br>Humanities, Westbridge Academy<br>Est. 2012</div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <section id="writing">
+    <p class="section-label">Latest Writing</p>
+    <h2 class="section-title">From the Blog</h2>
+    <div class="posts-grid">
+      
+    <article class="post-card">
+      <div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=340&fit=crop&auto=format')"></div>
+      <div class="post-body">
+        <span class="category">Pedagogy</span>
+        <h3>Why Confusion is the Gateway to Deep Learning</h3>
+        <p>Productive struggle isn't a bug in the classroom — it's the feature. When students wrestle with concepts that resist easy answers, lasting understanding takes root.</p>
+        <div class="post-meta">July 14, 2026 · 8 min read</div>
+      </div>
+    </article>
+
+    <article class="post-card">
+      <div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=340&fit=crop&auto=format')"></div>
+      <div class="post-body">
+        <span class="category">Writing</span>
+        <h3>Teaching Students to Argue Without Fighting</h3>
+        <p>The essay is a thinking technology. Getting students to treat writing as structured inquiry rather than performance changes everything about how they engage with ideas.</p>
+        <div class="post-meta">June 28, 2026 · 6 min read</div>
+      </div>
+    </article>
+
+    <article class="post-card">
+      <div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=340&fit=crop&auto=format')"></div>
+      <div class="post-body">
+        <span class="category">Literature</span>
+        <h3>On Teaching Novels No One Wants to Read</h3>
+        <p>Every teacher has that book. The one students resist until, somewhere around chapter seven, they forget to resist. Here's how I frame the resistance itself as curriculum.</p>
+        <div class="post-meta">June 10, 2026 · 10 min read</div>
+      </div>
+    </article>
+
+    <article class="post-card">
+      <div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=340&fit=crop&auto=format')"></div>
+      <div class="post-body">
+        <span class="category">Assessment</span>
+        <h3>The Portfolio as Mirror: What Students See When They Look Back</h3>
+        <p>End-of-term portfolios aren't just collections of work — they're structured moments of metacognition. I've refined this practice over twelve years of teaching.</p>
+        <div class="post-meta">May 22, 2026 · 7 min read</div>
+      </div>
+    </article>
+
+    <article class="post-card">
+      <div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=340&fit=crop&auto=format')"></div>
+      <div class="post-body">
+        <span class="category">Technology</span>
+        <h3>AI in the Classroom: A Skeptic's Field Notes</h3>
+        <p>I didn't want to care about AI. Two semesters of watching students use it told me I had to. These are my unpolished observations from the experiment.</p>
+        <div class="post-meta">May 5, 2026 · 12 min read</div>
+      </div>
+    </article>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section id="lessons" style="background:#F4F0E8; max-width:100%; padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,5rem);">
+    <div style="max-width:1280px; margin:0 auto;">
+      <p class="section-label">Free Resources</p>
+      <h2 class="section-title">Classroom Materials</h2>
+      <div class="lessons-grid">
+        
+    <div class="lesson-card">
+      <div class="lesson-header">
+        <span class="lesson-num">01</span>
+        <span class="downloads">1,240 downloads</span>
+      </div>
+      <h4>Close Reading Workshop</h4>
+      <div class="lesson-meta">English / Literature · Grades 9–12</div>
+      <button class="download-btn" onclick="alert('In a live deployment, this would download the resource.')">Download Free →</button>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-header">
+        <span class="lesson-num">02</span>
+        <span class="downloads">2,180 downloads</span>
+      </div>
+      <h4>Socratic Seminar Protocol</h4>
+      <div class="lesson-meta">Cross-curricular · Grades 7–12</div>
+      <button class="download-btn" onclick="alert('In a live deployment, this would download the resource.')">Download Free →</button>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-header">
+        <span class="lesson-num">03</span>
+        <span class="downloads">870 downloads</span>
+      </div>
+      <h4>Argument Mapping Toolkit</h4>
+      <div class="lesson-meta">Writing / Philosophy · Grades 10–12</div>
+      <button class="download-btn" onclick="alert('In a live deployment, this would download the resource.')">Download Free →</button>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-header">
+        <span class="lesson-num">04</span>
+        <span class="downloads">1,560 downloads</span>
+      </div>
+      <h4>Portfolio Reflection Templates</h4>
+      <div class="lesson-meta">Any Subject · Grades 6–12</div>
+      <button class="download-btn" onclick="alert('In a live deployment, this would download the resource.')">Download Free →</button>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&h=667&fit=crop&auto=format" alt="Portrait of educator Ms. Eleanor Marsh" loading="lazy">
+      </div>
+      <div class="about-content">
+        <span class="about-tag">About the Author</span>
+        <h2>Fourteen years in the classroom and still asking better questions</h2>
+        <p>I teach high school English and Humanities at Westbridge Academy, where I've spent the better part of my career obsessing over how people learn to think and write — and how to make that process visible to students while they're in it.</p>
+        <p>This blog is where I think out loud. I write about pedagogy, curriculum design, the books I teach and why, assessment practices that don't feel punitive, and the strange daily comedy of secondary education.</p>
+        <p>I hold an M.Ed. from Columbia Teachers College and a B.A. in English Literature from the University of Michigan. I've presented at NCTE conferences, served as department chair, and once accidentally introduced a Socratic seminar on <em>Beloved</em> while eating a granola bar.</p>
+        <div class="about-stats">
+          <div>
+            <span class="stat-num">14</span>
+            <span class="stat-label">Years Teaching</span>
+          </div>
+          <div>
+            <span class="stat-num">5,850+</span>
+            <span class="stat-label">Resource Downloads</span>
+          </div>
+          <div>
+            <span class="stat-num">62</span>
+            <span class="stat-label">Posts Published</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">The Examined Classroom</div>
+      <p class="footer-tagline">Essays on teaching, literature, and the practice of asking better questions — by Ms. Eleanor Marsh.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <ul>
+        <li>Blog</li>
+        <li>Lesson Resources</li>
+        <li>About</li>
+        <li>Contact</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Topics</h5>
+      <ul>
+        <li>Pedagogy</li>
+        <li>Literature</li>
+        <li>Writing</li>
+        <li>Assessment</li>
+        <li>Technology</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Emmanuel Marsh · The Examined Classroom · All rights reserved</div>
+</footer>
+
+</body>
+</html>
